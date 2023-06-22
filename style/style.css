@@ -163,3 +163,7 @@ li {
 .success-title {
     margin-top: 2.75rem;
 }
+
+.summary > span {
+    font-weight: 700;
+}
