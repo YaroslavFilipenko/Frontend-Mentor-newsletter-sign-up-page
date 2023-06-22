@@ -10,20 +10,24 @@ $(document).ready(function() {
     formButton.on('click', function(e) {
       e.preventDefault();
   
-    if (emailInput == '' || !emailPattern.test(emailInput.val())) {
+      if (emailInput == '' || !emailPattern.test(emailInput.val())) {
         emailInput.addClass('error');
         errorMessage.css('display', 'flex');
-    } else {
+      } else {
         emailInput.removeClass('error');
         errorMessage.css('display', 'none');
         subscribePage.css('display', 'none');
         successPage.css('display', 'block');
+  
+        const email = emailInput.val();
+        $('.emailSpan').text(email);
         form.reset();
-    }
+      }
     });
-
+  
     successButton.on('click', () => {
-        subscribePage.css('display', 'flex');
-        successPage.css('display', 'none');
+      subscribePage.css('display', 'flex');
+      successPage.css('display', 'none');
+      $('.emailSpan').text('');
     })
 });

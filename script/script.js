@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const formButton = document.querySelector('.form__button');
   const emailInput = document.querySelector('.form__input');
+  const formButton = document.querySelector('.form__button');
   const errorMessage = document.querySelector('.form__error');
   const subscribePage = document.querySelector('.subscribe-page');
   const successPage = document.querySelector('.success-page');
   const successButton = document.querySelector('.success__button');
+  const emailSpan = document.querySelector('.emailSpan');
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+
   formButton.addEventListener('click', function(e) {
     e.preventDefault();
 
@@ -18,12 +19,16 @@ document.addEventListener('DOMContentLoaded', function() {
       errorMessage.style.display = 'none';
       subscribePage.style.display = 'none';
       successPage.style.display = 'block';
-      document.forms[0].reset();
+
+      const email = emailInput.value;
+      emailSpan.textContent = email;
+      emailInput.value = '';
     }
   });
 
-  successButton.addEventListener('click', () => {
+  successButton.addEventListener('click', function() {
     subscribePage.style.display = 'flex';
     successPage.style.display = 'none';
-  })
+    emailSpan.textContent = '';
+  });
 });
